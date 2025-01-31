@@ -21,4 +21,5 @@ public class CategoryModel {
 
     @Column(name = "image")
     private String imagePath;
+
 }
