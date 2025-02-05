@@ -33,4 +33,15 @@ public class UserController {
        }
        return new ResponseEntity<>("Wrong credentials",HttpStatus.NOT_FOUND);
    }
+
+   // address api
+    @PostMapping(path = "/newaddress")
+    public ResponseEntity<?>newaddress(@RequestParam String email,@RequestParam String address){
+       try{
+           return userService.newaddress(email,address);
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       return new ResponseEntity<>("Invalid email",HttpStatus.NOT_FOUND);
+    }
 }

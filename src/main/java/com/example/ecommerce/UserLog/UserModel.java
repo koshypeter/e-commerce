@@ -23,6 +23,9 @@ public class UserModel {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "address")
+    private String address;
+
     public UserModel() {
     }
 
@@ -56,5 +59,13 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

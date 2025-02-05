@@ -13,20 +13,14 @@ public class ProductModel {
     @Column(name ="product_id")
     private Integer pid;
 
+    @Column(name = "category_id")
+    private Integer cid;
+
     @Column(name = "product_name")
     private String pname;
 
     @Column(name = "product_description")
     private String pdesc;
-
-    @Column(name = "price")
-    private Double price;
-
-    @Column(name = "discount_percent")
-    private Double discount;
-
-    //@Column(name = "final_price")
-    //private Double final_price=price-(price*(discount/100));
 
     @Lob
     @Column(name = "product_image")
@@ -41,6 +35,14 @@ public class ProductModel {
 
     public void setPid(Integer pid) {
         this.pid = pid;
+    }
+
+    public Integer getCid() {
+        return cid;
+    }
+
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     public String getPname() {
@@ -59,23 +61,7 @@ public class ProductModel {
         this.pdesc = pdesc;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Double discount) {
-        this.discount = discount;
-    }
-
-    public byte[] getProd_image() {
+    public byte[] getProd_image(byte[] bytes) {
         return prod_image;
     }
 
@@ -83,11 +69,4 @@ public class ProductModel {
         this.prod_image = prod_image;
     }
 
-    //public Double getFinal_price() {
-      //  return final_price;
-   // }
-
-    //public void setFinal_price(Double final_price) {
-       // this.final_price = final_price;
-    //}
 }

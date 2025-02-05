@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Optional;
 import java.io.IOException;
 
@@ -37,6 +38,7 @@ public class AdminService {
             return new ResponseEntity<>("Invalid Credentials",HttpStatus.NOT_FOUND);
     }
 
+    //add category
     public ResponseEntity<?> categoryadd(CategoryModel categoryModel, MultipartFile cat_Image) throws IOException {
         CategoryModel categoryModel1=new CategoryModel();
         categoryModel1.setCid(categoryModel.getCid());
@@ -45,5 +47,48 @@ public class AdminService {
         categoryModel1.setCat_image(cat_Image.getBytes());
         categoryRepo.save(categoryModel1);
         return new ResponseEntity<>(categoryModel1,HttpStatus.OK);
+    }
+    //update category
+    public ResponseEntity<?> updatecategory(Integer cid, CategoryModel categoryModel, MultipartFile cat_Image) throws IOException {
+        Optional<CategoryModel> categoryModelOptional=categoryRepo.findById(cid);
+        if (categoryModelOptional.isPresent()){
+            CategoryModel categoryModel1=categoryModelOptional.get();
+            categoryModel1.setCdesc(categoryModel.getCdesc());
+            categoryModel1.setCname(categoryModel.getCname());
+            categoryModel1.setCat_image(cat_Image.getBytes());
+            categoryRepo.save(categoryModel1);
+            return new ResponseEntity<>(categoryModel1,HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>("Invalid id",HttpStatus.NOT_FOUND);
+        }
+    }
+    //get all categories
+    public ResponseEntity<List<CategoryModel>> getallcategory() {
+        List<CategoryModel>categoryModelList=categoryRepo.findAll();
+        return new ResponseEntity<>(categoryModelList,HttpStatus.OK);
+    }
+    //get category by id
+    public ResponseEntity<?> getcategorybyid(Integer cid) {
+        Optional<CategoryModel> categoryModelOptional=categoryRepo.findById(cid);
+        if (categoryModelOptional.isPresent()){
+            CategoryModel categoryModel=categoryModelOptional.get();
+            return new ResponseEntity<>(categoryModel,HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>("Invalid id",HttpStatus.NOT_FOUND);
+    }
+
+    //delete category
+    public ResponseEntity<?> deletecategory(Integer cid) {
+        Optional<CategoryModel> categoryModelOptional=categoryRepo.findById(cid);
+        if (categoryModelOptional.isPresent()){
+            CategoryModel categoryModel=categoryModelOptional.get();
+            categoryRepo.delete(categoryModel);
+            return new ResponseEntity<>("DELETED",HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>("Invalid id",HttpStatus.NOT_FOUND);
+        }
     }
 }

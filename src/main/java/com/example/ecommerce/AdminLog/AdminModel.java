@@ -11,7 +11,7 @@ public class AdminModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Integer adminid;
 
     @Column(name = "username")
     private String username;
@@ -19,12 +19,12 @@ public class AdminModel {
     @Column(name = "password")
     private String password;
 
-    public Integer getId() {
-        return id;
+    public Integer getAdminid() {
+        return adminid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAdminid(Integer adminid) {
+        this.adminid = adminid;
     }
 
     public String getUsername() {
