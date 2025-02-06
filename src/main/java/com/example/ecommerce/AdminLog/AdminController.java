@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -66,7 +67,7 @@ public class AdminController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new ResponseEntity<>("error",HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new ArrayList<>(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
     //get category by id
     @GetMapping(path = "/getcategorybyid")

@@ -22,7 +22,7 @@ public class PriceModel {
     private Double price=0.0;
 
     @Column(name = "discount_percent")
-    private Double discount=0.0;//discount should be in percentage
+    private Double discount=0.0;        //discount should be in percentage
 
     @Column(name="final_price")
     private Double final_price=price-(price*(discount/100));
