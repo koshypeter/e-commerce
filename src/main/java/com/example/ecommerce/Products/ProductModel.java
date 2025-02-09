@@ -26,6 +26,9 @@ public class ProductModel {
     @Column(name = "product_image")
     private byte[] prod_image;
 
+    @Column(name = "Stock-availability")
+    private String stock;
+
     public ProductModel() {
     }
 
