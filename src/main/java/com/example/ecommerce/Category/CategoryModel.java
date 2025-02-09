@@ -1,8 +1,9 @@
 package com.example.ecommerce.Category;
 
-
+import java.util.*;
 import jakarta.persistence.*;
 import lombok.Data;
+import com.example.ecommerce.Products.ProductModel;
 
 @Entity
 @Table(name = "Category")
@@ -22,6 +23,9 @@ public class CategoryModel {
     @Lob
     @Column(name = "image")
     private byte[] cat_image;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ProductModel> products;
 
     public CategoryModel() {
     }

@@ -1,4 +1,5 @@
 package com.example.ecommerce.Products;
+import com.example.ecommerce.Category.CategoryModel;
 
 
 import jakarta.persistence.*;
@@ -13,7 +14,8 @@ public class ProductModel {
     @Column(name ="product_id")
     private Integer pid;
 
-    @Column(name = "category_id")
+    @ManyToOne
+    @JoinColumn (name = "category_id")
     private Integer cid;
 
     @Column(name = "product_name")
