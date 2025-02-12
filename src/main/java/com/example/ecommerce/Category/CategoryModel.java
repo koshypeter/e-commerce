@@ -24,8 +24,8 @@ public class CategoryModel {
     @Column(name = "image")
     private byte[] cat_image;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<ProductModel> products;
+//    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<ProductModel> products;
 
     public CategoryModel() {
     }

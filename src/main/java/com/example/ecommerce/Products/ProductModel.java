@@ -14,8 +14,9 @@ public class ProductModel {
     @Column(name ="product_id")
     private Integer pid;
 
-    @ManyToOne
-    @JoinColumn (name = "category_id")
+//    @ManyToOne
+//    @JoinColumn (name = "category_id")
+    @Column(name = "cid")
     private Integer cid;
 
     @Column(name = "product_name")
